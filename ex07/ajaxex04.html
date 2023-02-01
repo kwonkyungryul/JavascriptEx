@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>게시글 수정하기</h1>
+    <hr/>
+    <form>
+        <input type="text" id="id" placeholder="Enter id"><br/>
+        <input type="text" id="title" placeholder="Enter title"><br/>
+        <input type="text" id="body" placeholder="Enter body"><br/>
+        <input type="text" id="userId" placeholder="Enter userId"><br/>
+        <button type="button" onclick="updateById()">수정하기</button>
+    </form>
+    <script>
+        function onLoad() {
+            
+        }
+        onLoad();
+
+        function updateById() {
+            // 1. 값 받아오기
+            let post = {
+                id: $("#id").val(),
+                title: $("#title").val(),
+                body: $("#body").val(),
+                userId: $("#userId").val()
+            };
+            
+            // 2. 통신하기
+            $.ajax({
+                type: "put",
+                url: `https://jsonplaceholder.typicode.com/posts/${post.id}`,
+                data: JSON.stringify(post),
+                headers: {
+                    "Content-Type":"application/json; charset=utf-8"
+                },
+                dataType: "json"
+            }).done((res) => {
+                console.log("id", res.id);
+                console.log("title", res.title);
+                console.log("body", res.body);
+                console.log("userId", res.userId);
+            }).fail((err) => {
+                console.log(err);
+            });
+        }
+    </script>
+</body>
+</html>
