@@ -1,0 +1,27 @@
+<!-- dom을 돔이라고 하고 element라고도 한다 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>의자</h1>
+    <div>탁자</div>
+    <h3>책상</h3>
+
+    <button id="btnSeat">의자 없애기</button>
+    <script>
+        let btnSeatEL = document.querySelector("#btnSeat");
+        console.log(btnSeatEL);
+
+        btnSeatEL.addEventListener("click", function() { // 리스너(계속 주시하고 있음)
+            alert("클릭됨");
+            let e2 = document.querySelector("h1");
+            e2.remove();
+        });
+    </script>
+</body>
+</html>

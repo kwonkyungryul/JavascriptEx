@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="postBox">
+        <table id="postBox-table" border="1">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>작성자</th>
+            </tr>
+            
+        </table>
+    </div>
+
+    <button onclick="down()">다운로드</button>
+
+
+    <script>
+        async function down() {
+            let response = await fetch("http://192.168.200.58:8080/init/post", { // 다운로드 속도보다 response에 주는 게 더 빠르다 // await -> 이곳에 체크포인트를 잡고 기다린다.(단일 스레드라 다른 게 안됨 (동기화))
+                method:"get" // 디폴트(안 넣어도 됨)
+                // body:"sadfasd", // get 요청일 때는 body데이터 넣으면 안 된다.
+            });
+            let jsObject = await response.json(); // response의 json을 자바스크립트 오브젝트로 받아준다. // Client Side Rendering
+            // console.log(jsObject);
+            // console.log(jsObject.data[0].title);
+
+            render(jsObject);
+            console.log(response.headers.keys("Authorization"));
+        }
+
+        function render(jsObject) {
+            let tableEl = document.querySelector("#postBox-table"); // 클래스로 만들 거면 querySelectorAll(".~~");
+            for (let i = 0; i < jsObject.data.length; i++) {
+                let el = makeEl(jsObject.data[i]);
+                tableEl.append(el);
+            }
+        }
+
+        function makeEl(post) {
+            let el = document.createElement("tr");
+            el.innerHTML = `
+                <td>${post.id}</td>
+                <td>${post.title}</td>
+                <td>${post.content}</td>
+                <td>${post.user.username}</td>
+            `;
+            return el;
+        }
+    </script>
+
+    <h1>Hello</h1>
+    
+</body>
+</html>
+<!-- 순서 -->

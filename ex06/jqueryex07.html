@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/0d1c1758fd.css" crossorigin="anonymous"> -->
+
+    <script src="https://kit.fontawesome.com/32aa2b8683.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <style>
+        .my-cursor {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <i id="heart" class="fa-solid fa-regular fa-heart fa-2xl my-cursor" value="ok"></i>
+
+    <script>
+        $("#heart").click(()=>{
+            let value = $("#heart").val();
+            if (value == "ok") {
+                $("#heart").removeClass("fa-solid");
+                $("#heart").val("no");
+            } else {
+                $("#heart").addClass("fa-solid");
+                $("#heart").val("ok");
+            }
+
+
+            // let value = $("#heart").hasClass("fa-solid");
+            // if(value == true) {
+            //     $("#heart").removeClass("fa-solid"); 
+            // } else {
+            //     $("#heart").addClass("fa-solid"); 
+            // }
+
+
+            // $("#heart").toggleClass("fa-solid");
+        });
+    </script>
+</body>
+</html>

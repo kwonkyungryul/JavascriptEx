@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <div id="post-1">
+            <div>1</div>
+            <div>ssar</div>
+        </div>
+        <div id="post-2">
+            <div>2</div>
+            <div>cos</div>
+        </div>
+    </div>
+    <script>
+        let el = document.querySelector("#post-1");
+        let child = el.children;
+        console.log(el);
+        console.log(child[0]);
+        console.log(child[1]);
+
+        let nextEl = el.nextElementSibling;
+        let nextChild = nextEl.children;
+        console.log(nextEl);
+        console.log(nextChild[0]);
+        console.log(nextChild[1]);
+    </script>
+</body>
+
+</html>
